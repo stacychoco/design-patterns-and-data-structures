@@ -50,12 +50,12 @@ class LinkedList<Element: Equatable> {
     }
 
     var length: Int {
-        var recurringNode = self.head   // recurringNode loops through the linked list
-        var count = 0
+        var currentNode = self.head   // currentNode loops through the linked list
+        var count = 0  // counter to count length of list
 
-        while recurringNode !== nil {
+        while currentNode !== nil {
             count += 1
-            recurringNode = recurringNode?.next
+            currentNode = currentNode?.next
         }
 
         return count
@@ -88,13 +88,13 @@ class LinkedList<Element: Equatable> {
     }
 
     func removeFromTail() {
-        var recurringNode = self.head
+        var currentNode = self.head
 
-        while recurringNode?.next !== self.tail {
-            recurringNode = recurringNode?.next
+        while currentNode?.next !== self.tail {
+            currentNode = currentNode?.next
         }
 
-        self.tail = recurringNode
+        self.tail = currentNode
         self.tail?.next = nil
 
         if self.tail === nil {
@@ -104,11 +104,11 @@ class LinkedList<Element: Equatable> {
 
     func toArray() -> [Element] {
         var linkedListArray: [Element] = []
-        var recurringNode = self.head
+        var currentNode = self.head
 
-        while recurringNode !== nil {
-            linkedListArray.append(recurringNode!.element)
-            recurringNode = recurringNode?.next
+        while currentNode !== nil {
+            linkedListArray.append(currentNode!.element)
+            currentNode = currentNode?.next
         }
 
         return linkedListArray
@@ -122,17 +122,23 @@ class LinkedList<Element: Equatable> {
             self.insertAtHead(element: element)
         }
 
+        else if index == self.length {
+            self.insertAtTail(element: element)
+        }
+            
         else {
-           var recurringNode = self.head
-
-           if index >= 2 {
+            var currentNode = self.head
+            
+            // if index is equal to 1, then there's no need to go through the loop
+            if index >= 2 {
+                // loop through the linked list in order to find the right placement for insertion
                 for _ in 0...(index - 2) {
-                    recurringNode = recurringNode?.next
+                    currentNode = currentNode?.next
                 }
            }
 
-           let newNode = Node(element: element, next: recurringNode?.next)
-           recurringNode?.next = newNode
+            let newNode = Node(element: element, next: currentNode?.next)
+            currentNode?.next = newNode
         }
     }
     
@@ -142,37 +148,54 @@ class LinkedList<Element: Equatable> {
             self.removeFromHead()
         }
         
+        else if index == self.length {
+            self.removeFromTail()
+        }
+            
         else {
-            var recurringNode = self.head
+            var currentNode = self.head
             
             if index >= 2 {
                 for _ in 0...(index - 2) {
-                    recurringNode = recurringNode?.next
+                    currentNode = currentNode?.next
                 }
             }
             
-            recurringNode?.next = recurringNode?.next?.next
+            currentNode?.next = currentNode?.next?.next
         }
     }
     
     func append(list: LinkedList) {
-        for element in list.toArray() {
-            insertAtTail(element: element)
+        if list.length > 0 {
+            for element in list.toArray() {
+                self.insertAtTail(element: element)
+            }
         }
+        
+        // I tried to do this function with the snippets of code below this paragraph, but for some reason it doesn't work.
+        // That's why I had to solve this using a different way. The Big O notation is O(n*2) for my current solution
+        // and that is not really ideal. I will try my best to find a better way.
+        
+        //      self.tail?.next = list.head
+        //      self.tail = list.tail
     }
     
     func search(element: Element) -> Int? {
-        //finds first instance of element in list
+        // finds first instance of element in list
+        // return type is Int? because if element is not found, this function returns nil
         
         var count: Int? = 0
-    
-        for elementFromArray in self.toArray() {
-            if element != elementFromArray {
+        var currentNode = self.head
+        
+        // looping through linked list to find whether the element being searched for matches any in the list
+        while currentNode !== nil {
+            if element != currentNode!.element {
                 count! += 1
             }
             else {
                 break
             }
+            currentNode = currentNode?.next
         }
         
         if count == self.length {
@@ -187,20 +210,23 @@ class LinkedList<Element: Equatable> {
         
         var indexList: [Int] = []
         var count = 0
+        var currentNode = self.head
         
-        for elementFromArray in self.toArray() {
-            if element != elementFromArray {
+        while currentNode !== nil {
+            if element != currentNode!.element {
                 count += 1
             }
             else {
                 indexList.append(count)
                 count += 1
             }
+            currentNode = currentNode?.next
         }
         
         return indexList
     }
 }
+
 
 func main() {
     let node = Node(element: 1, next: nil)
@@ -208,8 +234,7 @@ func main() {
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 8)
-    myList.insertAt(index: 0, element: 10)
-    myList.removeFrom(index: 1)
+    myList.insertAt(index: 4, element: 10)
     myList.append(list: myList)
     let indexOfSearch = myList.search(element: 1)
     let searchList = myList.searchForAll(element: 1)
