@@ -1,0 +1,8 @@
+1) When would a linked list be a better choice than a dynamic array?
+
+A linked list is a better choice than a dynamic array when it is used for a large list of data where the total number of items in the list is changing.
+
+
+2) When would a dynamic array be a better choice than a linked list?
+
+A dynamic array is a better choice than a linked list when it is used for small lists, where the maximum number of items that could be on the list is known.
