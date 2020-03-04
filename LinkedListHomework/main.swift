@@ -166,18 +166,19 @@ class LinkedList<Element: Equatable> {
     }
     
     func append(list: LinkedList) {
-        if list.length > 0 {
-            for element in list.toArray() {
-                self.insertAtTail(element: element)
-            }
-        }
         
         // I tried to do this function with the snippets of code below this paragraph, but for some reason it doesn't work.
-        // That's why I had to solve this using a different way. The Big O notation is O(n*2) for my current solution
-        // and that is not really ideal. I will try my best to find a better way.
+        // That's why I had to solve this using a different way. The Big O notation is O(n) for my current solution
+        // and that is not the most ideal. I will try my best to find a better way.
         
         //      self.tail?.next = list.head
         //      self.tail = list.tail
+        
+        var currentNode = list.head
+        for _ in 0..<list.length {
+            self.insertAtTail(element: currentNode!.element)
+            currentNode = currentNode?.next
+        }
     }
     
     func search(element: Element) -> Int? {
