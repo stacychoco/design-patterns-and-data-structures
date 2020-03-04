@@ -126,6 +126,10 @@ class LinkedList<Element: Equatable> {
             self.insertAtTail(element: element)
         }
             
+        else if index < 0 {
+            return
+        }
+            
         else {
             var currentNode = self.head
             
@@ -152,6 +156,10 @@ class LinkedList<Element: Equatable> {
             self.removeFromTail()
         }
             
+        else if index < 0 {
+            return
+        }
+            
         else {
             var currentNode = self.head
             
@@ -168,14 +176,17 @@ class LinkedList<Element: Equatable> {
     func append(list: LinkedList) {
         
         // I tried to do this function with the snippets of code below this paragraph, but for some reason it doesn't work.
-        // That's why I had to solve this using a different way. The Big O notation is O(n) for my current solution
+        // That's why I had to solve this using a different way. The Big O notation is O(n*2) for my current solution
         // and that is not the most ideal. I will try my best to find a better way.
         
         //      self.tail?.next = list.head
         //      self.tail = list.tail
         
         var currentNode = list.head
+        
         for _ in 0..<list.length {
+            // iterate through the list a number of times that is equal to the length of the list
+            
             self.insertAtTail(element: currentNode!.element)
             currentNode = currentNode?.next
         }
@@ -235,7 +246,7 @@ func main() {
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 8)
-    myList.insertAt(index: 4, element: 10)
+    myList.insertAt(index: 1, element: 10)
     myList.append(list: myList)
     let indexOfSearch = myList.search(element: 1)
     let searchList = myList.searchForAll(element: 1)
