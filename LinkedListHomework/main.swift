@@ -48,6 +48,17 @@ class LinkedList<Element: Equatable> {
         return count
     }
 
+    func isEmpty() -> Bool {
+        // Check whether list is empty or not. I made this function for convenience.
+
+        if self.head === nil {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
     func insertAtHead(element: Element) {
         let newNode = Node(element: element, next: self.head)
         self.head = newNode
@@ -161,9 +172,18 @@ class LinkedList<Element: Equatable> {
     }
     
     func append(list: LinkedList) {
-        
-        self.tail?.next = list.head
-        self.tail = list.tail
+        if self.isEmpty() {
+            self.head = list.head
+            self.tail = list.tail
+        }
+
+        else {
+            self.tail?.next = list.head
+
+            if !list.isEmpty() {       // if list is not empty
+                self.tail = list.tail
+            }
+        }
     }
     
     func search(element: Element) -> Int? {
@@ -215,7 +235,6 @@ class LinkedList<Element: Equatable> {
 
 
 func main() {
-    
     let myList = LinkedList<Int>()
     let myList2 = LinkedList<Int>()
     
@@ -239,8 +258,8 @@ func main() {
     print("First element: \(myList.firstElement!)")
     print("Last element: \(myList.lastElement!)")
     print("Length: \(myList.length)")
-    print("The index of the first encountered 10 in the list is: \(String(describing: indexOfSearch!))")
-    print("All the indices of the list that hold 10 are: \(searchList)")
+    print("The index of the first encountered 1 in the list is: \(String(describing: indexOfSearch!))")
+    print("All the indices of the list that hold 1 are: \(searchList)")
 }
 
 main()
