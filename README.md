@@ -1,2 +1,2 @@
 # LinkedList
-Linked List implementation with Swift
+Singly Linked List implementation with Swift
