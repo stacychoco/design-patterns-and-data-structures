@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum LinkedListError: Error {
+    case indexOutOfBounds
+}
+
 class Node<Element: Equatable> {
     var element: Element
     var next: Node?
@@ -114,60 +118,60 @@ class LinkedList<Element: Equatable> {
 
     // Level 2
 
-    func insertAt(index: Int, element: Element) {
+    func insertAt(index: Int, element: Element) throws {
         
-        if index == 0 {
-            self.insertAtHead(element: element)
+        if index < 0 || index > self.length {
+            throw LinkedListError.indexOutOfBounds
         }
 
-        else if index == self.length {
-            self.insertAtTail(element: element)
-        }
-            
-        else if index < 0 {
-            return
-        }
-            
         else {
-            var currentNode = self.head
-            
-            // if index is equal to 1, then there's no need to go through the loop
-            if index >= 2 {
-                // loop through the linked list in order to find the right placement for insertion
-                for _ in 0...(index - 2) {
+            if index == 0 {
+                self.insertAtHead(element: element)
+            }
+
+            else if index == self.length {
+                self.insertAtTail(element: element)
+            }
+                
+            else {
+                var currentNode = self.head
+                
+                // loop through the linked list until the current node is the one before the index position
+                for _ in 0..<(index - 1) {
                     currentNode = currentNode?.next
                 }
-           }
 
-            let newNode = Node(element: element, next: currentNode?.next)
-            currentNode?.next = newNode
+                let newNode = Node(element: element, next: currentNode?.next)
+                currentNode?.next = newNode
+            }
         }
     }
     
-    func removeFrom(index: Int) {
-        
-        if index == 0 {
-            self.removeFromHead()
+    func removeFrom(index: Int) throws {
+
+        if index < 0 || index > self.length {
+            throw LinkedListError.indexOutOfBounds
         }
         
-        else if index == self.length {
-            self.removeFromTail()
-        }
-    
-        else if index < 0 {
-            return
-        }
-            
         else {
-            var currentNode = self.head
-            
-            if index >= 2 {
-                for _ in 0...(index - 2) {
-                    currentNode = currentNode?.next
-                }
+
+            if index == 0 {
+                self.removeFromHead()
             }
             
-            currentNode?.next = currentNode?.next?.next
+            else if index == self.length {
+                self.removeFromTail()
+            }
+                
+            else {
+                var currentNode = self.head
+                
+                for _ in 0..<(index - 1) {
+                    currentNode = currentNode?.next
+                }
+
+                currentNode?.next = currentNode?.next?.next
+            }
         }
     }
     
@@ -241,12 +245,12 @@ func main() {
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 8)
-    myList.insertAt(index: 1, element: 10)
+    try? myList.insertAt(index: 1, element: 10)
     
     myList2.insertAtHead(element: 3)
     myList2.insertAtTail(element: 4)
     myList2.insertAtTail(element: 8)
-    myList2.insertAt(index: 1, element: 10)
+    try? myList2.insertAt(index: 1, element: 10)
     
     myList.append(list: myList2)
     
