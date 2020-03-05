@@ -12,28 +12,15 @@ class Node<Element: Equatable> {
     var element: Element
     var next: Node?
     
-    init(element: Element, next: Node?) {
+    init(element: Element, next: Node? = nil) {
         self.element = element
-        self.next = next ?? nil
+        self.next = next
     }
 }
 
 class LinkedList<Element: Equatable> {
     var head: Node<Element>? = nil
     var tail: Node<Element>? = nil
-    
-    init(head: Node<Element>?, tail: Node<Element>?) {
-        self.head = head
-        self.tail = tail
-
-        if head === nil {
-            self.head = tail
-        }
-
-        else if tail === nil {
-            self.tail = head
-        }
-    }
     
     // Level 1
 
@@ -71,7 +58,7 @@ class LinkedList<Element: Equatable> {
     }
 
     func insertAtTail(element: Element) {
-        let newNode = Node(element: element, next: nil)
+        let newNode = Node(element: element)
         self.tail?.next = newNode
         self.tail = newNode
 
@@ -155,7 +142,7 @@ class LinkedList<Element: Equatable> {
         else if index == self.length {
             self.removeFromTail()
         }
-            
+    
         else if index < 0 {
             return
         }
@@ -175,21 +162,8 @@ class LinkedList<Element: Equatable> {
     
     func append(list: LinkedList) {
         
-        // I tried to do this function with the snippets of code below this paragraph, but for some reason it doesn't work.
-        // That's why I had to solve this using a different way. The Big O notation is O(n*2) for my current solution
-        // and that is not the most ideal. I will try my best to find a better way.
-        
-        //      self.tail?.next = list.head
-        //      self.tail = list.tail
-        
-        var currentNode = list.head
-        
-        for _ in 0..<list.length {
-            // iterate through the list a number of times that is equal to the length of the list
-            
-            self.insertAtTail(element: currentNode!.element)
-            currentNode = currentNode?.next
-        }
+        self.tail?.next = list.head
+        self.tail = list.tail
     }
     
     func search(element: Element) -> Int? {
@@ -241,15 +215,19 @@ class LinkedList<Element: Equatable> {
 
 
 func main() {
-    let node = Node(element: 1, next: nil)
-    let myList = LinkedList(head: node, tail: nil)
+    let myList = LinkedList<Int>()
+    let myList2 = LinkedList<Int>()
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 8)
     myList.insertAt(index: 1, element: 10)
-    myList.append(list: myList)
-    let indexOfSearch = myList.search(element: 1)
-    let searchList = myList.searchForAll(element: 1)
+    myList2.insertAtHead(element: 3)
+    myList2.insertAtTail(element: 4)
+    myList2.insertAtTail(element: 8)
+    myList2.insertAt(index: 1, element: 10)
+    myList.append(list: myList2)
+    let indexOfSearch = myList.search(element: 10)
+    let searchList = myList.searchForAll(element: 10)
     
     print(myList.toArray())
     print()
