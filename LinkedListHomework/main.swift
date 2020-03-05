@@ -215,17 +215,22 @@ class LinkedList<Element: Equatable> {
 
 
 func main() {
+    
     let myList = LinkedList<Int>()
     let myList2 = LinkedList<Int>()
+    
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 8)
     myList.insertAt(index: 1, element: 10)
+    
     myList2.insertAtHead(element: 3)
     myList2.insertAtTail(element: 4)
     myList2.insertAtTail(element: 8)
     myList2.insertAt(index: 1, element: 10)
+    
     myList.append(list: myList2)
+    
     let indexOfSearch = myList.search(element: 10)
     let searchList = myList.searchForAll(element: 10)
     
@@ -234,8 +239,8 @@ func main() {
     print("First element: \(myList.firstElement!)")
     print("Last element: \(myList.lastElement!)")
     print("Length: \(myList.length)")
-    print("The index of the first encountered 1 in the list is: \(String(describing: indexOfSearch!))")
-    print("All the indices of the list that hold 1 are: \(searchList)")
+    print("The index of the first encountered 10 in the list is: \(String(describing: indexOfSearch!))")
+    print("All the indices of the list that hold 10 are: \(searchList)")
 }
 
 main()
