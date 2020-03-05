@@ -10,6 +10,7 @@ import Foundation
 
 enum LinkedListError: Error {
     case indexOutOfBounds
+    case elementNotFound
 }
 
 class Node<Element: Equatable> {
@@ -190,32 +191,39 @@ class LinkedList<Element: Equatable> {
         }
     }
     
-    func search(element: Element) -> Int? {
+    func search(element: Element) throws -> Int {
         // finds first instance of element in list
-        // return type is Int? because if element is not found, this function returns nil
         
-        var count: Int? = 0
+        var count: Int = 0
         var currentNode = self.head
         
         // looping through linked list to find whether the element being searched for matches any in the list
+        
         while currentNode !== nil {
             if element != currentNode!.element {
-                count! += 1
+                count += 1
             }
             else {
                 break
             }
             currentNode = currentNode?.next
         }
+
+
+        // if element is not found, the whole loop is completed and it doesn't break before hand.
+        // hence, count is equal to length in this case.
+        // if the element is the last one in the list, the count should be length - 1
         
         if count == self.length {
-            count = nil
+            throw LinkedListError.elementNotFound
         }
         
-        return count
+        else {
+            return count
+        }
     }
     
-    func searchForAll(element: Element) -> [Int] {
+    func searchForAll(element: Element) throws -> [Int] {
         //returns all indicies of the list that hold this element
         
         var indexList: [Int] = []
@@ -232,8 +240,14 @@ class LinkedList<Element: Equatable> {
             }
             currentNode = currentNode?.next
         }
+
+        if indexList.isEmpty {
+            throw LinkedListError.elementNotFound
+        }
         
-        return indexList
+        else {
+            return indexList
+        }
     }
 }
 
@@ -244,26 +258,28 @@ func main() {
     
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
-    myList.insertAtTail(element: 8)
+    myList.insertAtTail(element: 9)
     try? myList.insertAt(index: 1, element: 10)
     
     myList2.insertAtHead(element: 3)
-    myList2.insertAtTail(element: 4)
-    myList2.insertAtTail(element: 8)
+    myList2.insertAtTail(element: 5)
+    myList2.insertAtTail(element: 7)
     try? myList2.insertAt(index: 1, element: 10)
     
     myList.append(list: myList2)
     
-    let indexOfSearch = myList.search(element: 10)
-    let searchList = myList.searchForAll(element: 10)
+    let indexOfSearch = try! myList.search(element: 10)
+    let searchList = try! myList.searchForAll(element: 10)
     
     print(myList.toArray())
     print()
     print("First element: \(myList.firstElement!)")
     print("Last element: \(myList.lastElement!)")
     print("Length: \(myList.length)")
-    print("The index of the first encountered 1 in the list is: \(String(describing: indexOfSearch!))")
-    print("All the indices of the list that hold 1 are: \(searchList)")
+
+    // the string describing stuff is put there in case 
+    print("The index of the first encountered 10 in the list is: \(String(describing: indexOfSearch))")
+    print("All the indices of the list that hold 10 are: \(String(describing: searchList))")
 }
 
 main()
