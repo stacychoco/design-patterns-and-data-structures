@@ -1,8 +1,8 @@
 //
 //  main.swift
-//  LinkedListHomework
+//  DoublyLinkedList
 //
-//  Created by Stacy Nguyen on 3/2/20.
+//  Created by Stacy Nguyen on 3/5/20.
 //  Copyright © 2020 Stacy Nguyen. All rights reserved.
 //
 
