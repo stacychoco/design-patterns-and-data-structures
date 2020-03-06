@@ -11,7 +11,6 @@ import Foundation
 enum LinkedListError: Error {
     case indexOutOfBounds
     case elementNotFound
-    case cannotAppendListToItself
 }
 
 class Node<Element: Equatable> {
