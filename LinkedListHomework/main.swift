@@ -5,7 +5,6 @@
 //  Created by Stacy Nguyen on 3/2/20.
 //  Copyright © 2020 Stacy Nguyen. All rights reserved.
 //
-
 import Foundation
 
 enum LinkedListError: Error {
@@ -28,7 +27,6 @@ class LinkedList<Element: Equatable> {
     var tail: Node<Element>? = nil
     
     // Level 1
-
     var firstElement: Element? {
         get {
             return self.head?.element
@@ -44,7 +42,6 @@ class LinkedList<Element: Equatable> {
     var length: Int {
         var currentNode = self.head   // currentNode loops through the linked list
         var count = 0  // counter to count length of list
-
         while currentNode !== nil {
             count += 1
             currentNode = currentNode?.next
@@ -55,7 +52,6 @@ class LinkedList<Element: Equatable> {
 
     func isEmpty() -> Bool {
         // Check whether list is empty or not. I made this function for convenience.
-
         if self.head === nil {
             return true
         }
@@ -93,12 +89,13 @@ class LinkedList<Element: Equatable> {
     func removeFromTail() {
         var currentNode = self.head
 
-        while currentNode?.next !== self.tail {
+        // the node will loop until it is the node right before the last node of the list
+        for _ in 0..<(self.length - 2) {
             currentNode = currentNode?.next
         }
 
+        currentNode?.next = nil
         self.tail = currentNode
-        self.tail?.next = nil
 
         if self.tail === nil {
             self.head = nil
@@ -118,7 +115,6 @@ class LinkedList<Element: Equatable> {
     }
 
     // Level 2
-
     func insertAt(index: Int, element: Element) throws {
         
         if index < 0 || index > self.length {
@@ -259,14 +255,16 @@ func main() {
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 9)
+    myList.removeFromTail()
     try? myList.insertAt(index: 1, element: 10)
     
     myList2.insertAtHead(element: 3)
     myList2.insertAtTail(element: 5)
-    myList2.insertAtTail(element: 7)
+    myList2.insertAtTail(element: 2)
     try? myList2.insertAt(index: 1, element: 10)
     
     myList.append(list: myList2)
+    try? myList.removeFrom(index: 5)
     
     let indexOfSearch = try! myList.search(element: 10)
     let searchList = try! myList.searchForAll(element: 10)
