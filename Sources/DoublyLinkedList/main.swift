@@ -87,22 +87,22 @@ class LinkedList<Element: Equatable> {
     }
 
     func removeFromHead() {
+
         self.head = self.head?.next
         self.head?.prev = nil
+
         if self.head === nil {
             self.tail = nil
         }
     }
 
     func removeFromTail() {
-        var currentNode = self.head
 
-        while currentNode?.next !== self.tail {
-            currentNode = currentNode?.next
-        }
+        // set the node before the tail so that the last element becomes nil
+        self.tail?.prev?.next = nil
 
-        self.tail = currentNode
-        self.tail?.next = nil
+        // set tail to the element before it
+        self.tail = self.tail?.prev
 
         if self.tail === nil {
             self.head = nil
@@ -139,11 +139,25 @@ class LinkedList<Element: Equatable> {
             }
                 
             else {
-                var currentNode = self.head
-                
-                // loop through the linked list until the current node is the one before the index position
-                for _ in 0..<(index - 1) {
-                    currentNode = currentNode?.next
+
+                var currentNode: Node<Element>? = nil
+
+                // the conditions below determine what the index is compared to the length. 
+                // if the index is smaller than half of the length, looping will start from head.
+                // if the index is larger than half of the length, looping will start from tail.
+
+                if index <= (self.length / 2) {
+                    currentNode = self.head
+                    for _ in 0..<(index - 1) {
+                        currentNode = currentNode?.next
+                    }
+                }
+
+                else {
+                    currentNode = self.tail
+                    for _ in stride(from:self.length, through:(index + 1), by:-1) {
+                        currentNode = currentNode?.prev
+                    }
                 }
 
                 let newNode = Node(element: element, next: currentNode?.next, prev: currentNode)
@@ -165,15 +179,25 @@ class LinkedList<Element: Equatable> {
                 self.removeFromHead()
             }
             
-            else if index == self.length {
+            else if index == (self.length - 1) {
                 self.removeFromTail()
             }
                 
             else {
-                var currentNode = self.head
-                
-                for _ in 0..<(index - 1) {
-                    currentNode = currentNode?.next
+                var currentNode: Node<Element>? = nil
+
+                if index <= (self.length / 2) {
+                    currentNode = self.head
+                    for _ in 0..<(index - 1) {
+                        currentNode = currentNode?.next
+                    }
+                }
+
+                else {
+                    currentNode = self.tail
+                    for _ in stride(from:self.length, through:(index + 1), by:-1) {
+                        currentNode = currentNode?.prev
+                    }
                 }
 
                 currentNode?.next?.next?.prev = currentNode
@@ -267,18 +291,24 @@ func main() {
     
     myList.insertAtHead(element: 3)
     myList.insertAtTail(element: 4)
+    myList.removeFromTail()
     myList.insertAtTail(element: 9)
+    myList.insertAtTail(element: 11)
+    myList.insertAtTail(element: 12)
+    myList.insertAtTail(element: 18)    
     try? myList.insertAt(index: 1, element: 10)
+    try? myList.insertAt(index: 6, element: 17)
+    try? myList.removeFrom(index: 2)
+    try? myList.removeFrom(index: 6)
     
     myList2.insertAtHead(element: 3)
     myList2.insertAtTail(element: 5)
     myList2.insertAtTail(element: 7)
-    try? myList2.insertAt(index: 1, element: 10)
     
     myList.append(list: myList2)
     
-    let indexOfSearch = try! myList.search(element: 10)
-    let searchList = try! myList.searchForAll(element: 10)
+    let indexOfSearch = try? myList.search(element: 10)
+    let searchList = try? myList.searchForAll(element: 10)
     
     print(myList.toArray())
     print()
@@ -287,8 +317,8 @@ func main() {
     print("Length: \(myList.length)")
 
     // the string describing stuff is put there in case the value returned is nil
-    print("The index of the first encountered 10 in the list is: \(String(describing: indexOfSearch))")
-    print("All the indices of the list that hold 10 are: \(String(describing: searchList))")
+    print("The index of the first encountered 10 in the list is: \(String(describing: indexOfSearch!))")
+    print("All the indices of the list that hold 10 are: \(String(describing: searchList!))")
 }
 
 main()
