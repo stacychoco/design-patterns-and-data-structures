@@ -87,18 +87,21 @@ class LinkedList<Element: Equatable> {
     }
 
     func removeFromTail() {
-        var currentNode = self.head
-
-        // the node will loop until it is the node right before the last node of the list
-        for _ in 0..<(self.length - 2) {
-            currentNode = currentNode?.next
+        if self.head?.next === nil {
+            self.head = nil
+            self.tail = nil
         }
 
-        currentNode?.next = nil
-        self.tail = currentNode
+        else {
+            var currentNode = self.head
 
-        if self.tail === nil {
-            self.head = nil
+            // the node will loop until it is the node right before the last node of the list
+            for _ in 0..<(self.length - 2) {
+                currentNode = currentNode?.next
+            }
+
+            currentNode?.next = nil
+            self.tail = currentNode
         }
     }
 
@@ -253,9 +256,9 @@ func main() {
     let myList2 = LinkedList<Int>()
     
     myList.insertAtHead(element: 3)
+    myList.removeFromTail()
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 9)
-    myList.removeFromTail()
     try? myList.insertAt(index: 1, element: 10)
     
     myList2.insertAtHead(element: 3)
