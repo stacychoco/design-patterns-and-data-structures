@@ -149,7 +149,7 @@ class LinkedList<Element: Equatable> {
     
     func removeFrom(index: Int) throws {
 
-        if index < 0 || index > self.length {
+        if index < 0 || index >= self.length {
             throw LinkedListError.indexOutOfBounds
         }
         
@@ -159,7 +159,7 @@ class LinkedList<Element: Equatable> {
                 self.removeFromHead()
             }
             
-            else if index == self.length {
+            else if index == (self.length - 1) {
                 self.removeFromTail()
             }
                 
@@ -256,7 +256,6 @@ func main() {
     let myList2 = LinkedList<Int>()
     
     myList.insertAtHead(element: 3)
-    myList.removeFromTail()
     myList.insertAtTail(element: 4)
     myList.insertAtTail(element: 9)
     try? myList.insertAt(index: 1, element: 10)
@@ -267,7 +266,8 @@ func main() {
     try? myList2.insertAt(index: 1, element: 10)
     
     myList.append(list: myList2)
-    try? myList.removeFrom(index: 5)
+    
+    try? myList.removeFrom(index: 6)
     
     let indexOfSearch = try! myList.search(element: 10)
     let searchList = try! myList.searchForAll(element: 10)
