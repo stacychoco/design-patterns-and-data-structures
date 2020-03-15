@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum StackError: Error {
+	case stackIsEmpty
+}
+
 class Stack<T> {
 	var stack: Array<T>
 
@@ -19,14 +23,15 @@ class Stack<T> {
 		self.stack.append(element)
 	}
 
-	func pop() -> T? {
+	func pop() throws -> T {
 
-		let popElement = self.stack.last
-		
-		if !self.isEmpty() {
-			self.stack.removeLast()
+		// if stack is empty an error will throw
+		guard !self.isEmpty() else {
+			throw StackError.stackIsEmpty
 		}
-		
+			
+		let popElement = self.stack.last!
+		self.stack.removeLast()
 		return popElement
 	}
 
@@ -40,8 +45,14 @@ class Stack<T> {
 		}
 	}
 
-	func peek() -> T? {
-		return self.stack.last
+	func peek() throws -> T {
+
+		// if stack is empty an error will throw
+		guard !self.isEmpty() else {
+			throw StackError.stackIsEmpty
+		}
+
+		return self.stack.last!
 	}
 
 	func clear() {

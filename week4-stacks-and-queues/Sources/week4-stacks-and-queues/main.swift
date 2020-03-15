@@ -12,15 +12,15 @@ func main() {
 	let stack1 = Stack(stack: [1, 2, 3])
 	stack1.push(element: 4)
 	
-	let pop = stack1.pop()
+	let pop = try! stack1.pop()
 	print(stack1.stack)
-	print(pop)
+	print("\(pop) was just popped!")
 	
 	if !stack1.isEmpty() {
-		print("not empty!")
+		print("Stack is not empty!")
 	}
 	
-	print(stack1.peek())
+	try? print("Element peeked at is: \(stack1.peek())")
 	stack1.clear()
 	print(stack1.stack)
 }
