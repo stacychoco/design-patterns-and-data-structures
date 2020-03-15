@@ -1,3 +1,3 @@
 # Week 4 - Stacks & Queues
 
-A description of this package.
+Stacks & Queues HW written in Swift.
