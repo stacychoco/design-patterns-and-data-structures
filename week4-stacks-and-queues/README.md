@@ -1,3 +1,3 @@
 # week4-stacks-and-queues
 
-A description of this package.
+Stacks & Queues homework written in Swift
