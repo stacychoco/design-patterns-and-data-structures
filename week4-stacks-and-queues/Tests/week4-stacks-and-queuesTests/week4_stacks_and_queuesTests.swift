@@ -1,7 +1,7 @@
 import XCTest
 import class Foundation.Bundle
 
-final class Week_4___Stacks___QueuesTests: XCTestCase {
+final class week4_stacks_and_queuesTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
@@ -12,7 +12,7 @@ final class Week_4___Stacks___QueuesTests: XCTestCase {
             return
         }
 
-        let fooBinary = productsDirectory.appendingPathComponent("Week 4 - Stacks & Queues")
+        let fooBinary = productsDirectory.appendingPathComponent("week4-stacks-and-queues")
 
         let process = Process()
         process.executableURL = fooBinary

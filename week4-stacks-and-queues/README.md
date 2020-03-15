@@ -1,3 +1,3 @@
-# Week 4 - Stacks & Queues
+# week4-stacks-and-queues
 
 A description of this package.
