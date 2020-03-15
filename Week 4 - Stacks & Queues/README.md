@@ -1,3 +1,3 @@
 # Week 4 - Stacks & Queues
 
-Stacks & Queues HW written in Swift.
+Stacks & Queues homework written in Swift
