@@ -56,6 +56,11 @@ func hasCorrectDelimiters(str: String) -> Bool {
 		}
 	}
 
+	// also, I was thinking that since there are so many if statements,
+	// whether it would be more efficient to use 'switch case' instead
+	// but after considering for a while I still think this is more efficient.
+	// any thoughts?
+
 	if stack.isEmpty() {
 		return true
 	}
