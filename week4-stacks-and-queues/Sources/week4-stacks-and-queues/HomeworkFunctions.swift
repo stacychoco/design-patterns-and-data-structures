@@ -56,10 +56,14 @@ func hasCorrectDelimiters(str: String) -> Bool {
 		}
 	}
 
-	// also, I was thinking that since there are so many if statements,
-	// whether it would be more efficient to use 'switch case' instead
-	// but after considering for a while I still think this is more efficient.
-	// any thoughts?
+	// Also, I was thinking that since there are so many if statements,
+	// whether it would be more efficient to use 'switch case' instead.
+	
+	// But after considering for a while, 
+	// I think there wouldn't be a change in terms of efficiency,
+	// but maybe the code would be easier to read.
+	
+	// Any thoughts?
 
 	if stack.isEmpty() {
 		return true
@@ -68,4 +72,41 @@ func hasCorrectDelimiters(str: String) -> Bool {
 	else {
 		return false
 	}
+}
+
+
+func isAPalindrome(str: String) -> Bool {
+	
+	let alphabet = "abcdefghijklmnopqrstuvwxyz"
+	let alphabetArray = Array(alphabet)
+	var palindromeArray: [Character] = []
+
+	for x in str.lowercased() {
+		if alphabetArray.contains(x) {
+			palindromeArray.append(x)
+		}
+	}
+	
+	let stack = Stack(stack: palindromeArray)
+	let queue = Queue(queue: palindromeArray)
+
+	var forwardString = ""
+	var backwardString = ""
+
+	while !queue.isEmpty() {
+		forwardString.append(try! queue.dequeue())
+	}
+
+	while !stack.isEmpty() {
+		backwardString.append(try! stack.pop())
+	} 
+
+	if forwardString == backwardString {
+		return true
+	}
+
+	else {
+		return false
+	}
+
 }

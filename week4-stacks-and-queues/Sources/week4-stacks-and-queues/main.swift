@@ -52,6 +52,17 @@ func delimiterTest() {
 	}
 }
 
+func palindromeTest() {
+	let testStr = "A dog! A panic in a pagoda!"
+	let result = isAPalindrome(str: testStr)
+	if result == true {
+		print("The string is a palindrome.")
+	}
+	else {
+		print("The string is not a palindrome.")
+	}
+}
+
 func main() {
 	print()
 	print("Let the stack test begin!")
@@ -64,10 +75,16 @@ func main() {
 	queueTest()
 
 	print()
-	print("Finally, onto the delimiter test!")
+	print("On to the delimiter test!")
 	print("The string that is tested is 'while ( a < ( b[ 3 ] + c ) )'")
 
 	delimiterTest()
+
+	print()
+	print("On to the palindrome test!")
+	print("The string that is tested is 'A dog! A panic in a pagoda!'")
+
+	palindromeTest()
 }
 
 main()
