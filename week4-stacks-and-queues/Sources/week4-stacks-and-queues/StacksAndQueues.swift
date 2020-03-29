@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  StacksAndQueues.swift
 //  Stacks & Queues Homework
 //
 //  Created by Stacy Nguyen on 3/15/20.
@@ -80,7 +80,7 @@ class Queue<T> {
 
 	func enqueue(element: T) {
 	// puts element at the end of the queue
-	
+
 		self.queue.append(element)
 	}
 

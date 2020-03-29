@@ -41,6 +41,17 @@ func queueTest() {
 
 }
 
+func delimiterTest() {
+	let testStr = "while ( a < ( b[ 3 ] + c ) )"
+	let result = hasCorrectDelimiters(str: testStr)
+	if result == true {
+		print("The string has correct delimiters.")
+	}
+	else {
+		print("The string has incorrect delimiters.")
+	}
+}
+
 func main() {
 	print()
 	print("Let the stack test begin!")
@@ -51,6 +62,12 @@ func main() {
 	print("On to the queue test...")
 	
 	queueTest()
+
+	print()
+	print("Finally, onto the delimiter test!")
+	print("The string that is tested is 'while ( a < ( b[ 3 ] + c ) )'")
+
+	delimiterTest()
 }
 
 main()
