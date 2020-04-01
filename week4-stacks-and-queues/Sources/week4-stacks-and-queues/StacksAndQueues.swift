@@ -51,14 +51,7 @@ class Stack<T> {
 
 	var isEmpty: Bool {
 	// checks if stack is empty
-
-		if self.stack.isEmpty {
-			return true
-		}
-
-		else {
-			return false
-		}
+		return self.stack.isEmpty
 	}
 
 }
@@ -104,14 +97,7 @@ class Queue<T> {
 
 	var isEmpty: Bool {
 	// checks if queue is empty
-
-		if self.queue.isEmpty {
-			return true
-		}
-
-		else {
-			return false
-		}
+		return self.queue.isEmpty 
 	}
 
 }
