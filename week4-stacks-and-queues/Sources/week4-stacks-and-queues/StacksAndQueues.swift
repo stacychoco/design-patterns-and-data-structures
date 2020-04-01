@@ -8,11 +8,8 @@
 
 import Foundation
 
-enum StackError: Error {
-	case stackIsEmpty
-}
-
 class Stack<T> {
+
 	var stack: Array<T>
 
 	init(stack: Array<T> = []) {
@@ -25,20 +22,34 @@ class Stack<T> {
 		self.stack.append(element)
 	}
 
-	func pop() throws -> T {
+	func pop() -> T? {
 	// *removes and returns* the top element in the stack
 
-		// if stack is empty an error will throw
-		guard !self.isEmpty() else {
-			throw StackError.stackIsEmpty
+		let popElement = self.stack.last
+		
+		if !self.stack.isEmpty {
+			self.stack.removeLast()
 		}
-			
-		let popElement = self.stack.last!
-		self.stack.removeLast()
+		
 		return popElement
 	}
 
-	func isEmpty() -> Bool {
+	func peek() -> T? {
+	// returns the top element in the stack
+
+		return self.stack.last
+	}
+
+	func clear() {
+	// removes all items from the stack
+		self.stack = []
+	}
+
+	var size: Int {
+		return self.stack.count
+	}
+
+	var isEmpty: Bool {
 	// checks if stack is empty
 
 		if self.stack.isEmpty {
@@ -50,25 +61,6 @@ class Stack<T> {
 		}
 	}
 
-	func peek() throws -> T {
-	// returns the top element in the stack
-
-		// if stack is empty an error will throw
-		guard !self.isEmpty() else {
-			throw StackError.stackIsEmpty
-		}
-
-		return self.stack.last!
-	}
-
-	func clear() {
-	// removes all items from the stack
-		self.stack = []
-	}
-}
-
-enum QueueError: Error {
-	case queueIsEmpty
 }
 
 class Queue<T> {
@@ -84,20 +76,33 @@ class Queue<T> {
 		self.queue.append(element)
 	}
 
-	func dequeue() throws -> T {
+	func dequeue() -> T? {
 	// *removes and returns* first element from front of queue
-
-		// if queue is empty an error will throw
-		guard !self.isEmpty() else {
-			throw QueueError.queueIsEmpty
-		}
 			
-		let dequeueElement = self.queue.first!
-		self.queue.remove(at: 0)
+		let dequeueElement = self.queue.first
+
+		if !self.queue.isEmpty {
+			self.queue.remove(at: 0)
+		}
+
 		return dequeueElement
 	}
 
-	func isEmpty() -> Bool {
+	func front() -> T? {
+	// returns the first element from front of queue
+		return self.queue.first
+	}
+
+	func clear() {
+	// removes all elements from queue
+		self.queue = []
+	}
+
+	var size: Int {
+		return self.queue.count
+	}
+
+	var isEmpty: Bool {
 	// checks if queue is empty
 
 		if self.queue.isEmpty {
@@ -109,19 +114,4 @@ class Queue<T> {
 		}
 	}
 
-	func first() throws -> T {
-	// returns the first element from front of queue
-
-		// if queue is empty an error will throw
-		guard !self.isEmpty() else {
-			throw QueueError.queueIsEmpty
-		}
-
-		return self.queue.first!
-	}
-
-	func clear() {
-	// removes all elements from queue
-		self.queue = []
-	}
 }

@@ -8,19 +8,17 @@
 
 import Foundation
 
-func hasCorrectDelimiters(str: String) -> Bool {
+func hasCorrectDelimiters(_ string: String) -> Bool {
 	
 	// array of characters converted from the string parameter
-	let charArray = Array(str)
+	let charArray = Array(string)
 
-	// array used for the Stacks
-	let stackArray: [Character] = []
-	let stack = Stack(stack: stackArray)
+	let stack = Stack<Character>()
 
 	for x in charArray {
 		
 		// looking at the top of the stack
-		let topChar = try? stack.peek()
+		let topChar = stack.peek()
 		
 		// if I find an open delimiter, I push it to the stack
 		if x == "(" || x == "[" || x == "{" {
@@ -31,22 +29,22 @@ func hasCorrectDelimiters(str: String) -> Bool {
 		// therefore "closing" the delimiter
 		
 		else if topChar == "(" && x == ")" {
-			_ = try? stack.pop()
+			_ = stack.pop()
 		}
 
 		else if topChar == "[" && x == "]" {
-			_ = try? stack.pop()
+			_ = stack.pop()
 		}
 
 		else if topChar == "{" && x == "}" {
-			_ = try? stack.pop()
+			_ = stack.pop()
 		}
 
 		// mismatched delimiter
 		else if x == ")" || x == "]" || x == "}" {
 			
 			// in case x is the last element in the string
-			if stack.isEmpty() {
+			if stack.isEmpty {
 				stack.push(element: x)
 			}
 
@@ -65,23 +63,26 @@ func hasCorrectDelimiters(str: String) -> Bool {
 	
 	// Any thoughts?
 
-	if stack.isEmpty() {
+	if stack.isEmpty {
 		return true
 	}
 
 	else {
 		return false
 	}
+
 }
 
 
-func isAPalindrome(str: String) -> Bool {
+func isAPalindrome(_ string: String) -> Bool {
 	
 	let alphabet = "abcdefghijklmnopqrstuvwxyz"
 	let alphabetArray = Array(alphabet)
 	var palindromeArray: [Character] = []
 
-	for x in str.lowercased() {
+	// only appending to the palindromeArray 
+	// if the character belongs to the latin alphabet
+	for x in string.lowercased() {
 		if alphabetArray.contains(x) {
 			palindromeArray.append(x)
 		}
@@ -93,12 +94,12 @@ func isAPalindrome(str: String) -> Bool {
 	var forwardString = ""
 	var backwardString = ""
 
-	while !queue.isEmpty() {
-		forwardString.append(try! queue.dequeue())
+	while !queue.isEmpty {
+		forwardString.append(queue.dequeue()!)
 	}
 
-	while !stack.isEmpty() {
-		backwardString.append(try! stack.pop())
+	while !stack.isEmpty {
+		backwardString.append(stack.pop()!)
 	} 
 
 	if forwardString == backwardString {

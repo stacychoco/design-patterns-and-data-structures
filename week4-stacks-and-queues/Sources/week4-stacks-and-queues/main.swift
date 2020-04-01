@@ -12,15 +12,15 @@ func stackTest() {
 	let stack1 = Stack(stack: [1, 2, 3])
 	stack1.push(element: 4)
 	
-	let pop = try! stack1.pop()
+	let pop = stack1.pop()
 	print(stack1.stack)
-	print("\(pop) was just popped!")
+	print("\(pop!) was just popped!")
 	
-	if !stack1.isEmpty() {
+	if !stack1.isEmpty {
 		print("Stack is not empty!")
 	}
 	
-	try? print("Element peeked at is: \(stack1.peek())")
+	print("Element peeked at is: \(stack1.peek()!)")
 	stack1.clear()
 	print(stack1.stack)
 }
@@ -30,11 +30,11 @@ func queueTest() {
 	queue1.enqueue(element: "!")
 	print(queue1.queue)
 
-	let dequeue = try! queue1.dequeue()
-	print("'\(dequeue)' is the dequeued element!")
+	let dequeue = queue1.dequeue()
+	print("'\(dequeue!)' is the dequeued element!")
 	
-	let firstElement = try! queue1.first()
-	print("The first element of the queue is: \(firstElement)")
+	let frontElement = queue1.front()
+	print("The front element of the queue is: \(frontElement!)")
 
 	queue1.clear()
 	print(queue1.queue)
@@ -43,7 +43,7 @@ func queueTest() {
 
 func delimiterTest() {
 	let testStr = "while ( a < ( b[ 3 ] + c ) )"
-	let result = hasCorrectDelimiters(str: testStr)
+	let result = hasCorrectDelimiters(testStr)
 	if result == true {
 		print("The string has correct delimiters.")
 	}
@@ -54,7 +54,7 @@ func delimiterTest() {
 
 func palindromeTest() {
 	let testStr = "A dog! A panic in a pagoda!"
-	let result = isAPalindrome(str: testStr)
+	let result = isAPalindrome(testStr)
 	if result == true {
 		print("The string is a palindrome.")
 	}
