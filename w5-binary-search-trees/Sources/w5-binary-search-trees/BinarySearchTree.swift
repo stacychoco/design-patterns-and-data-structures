@@ -19,17 +19,15 @@ class BSTNode<T: Comparable> {
     }
 
     var height: Int {
-    	var count = 0
+    	var count = 1
 
     	if self.leftChild !== nil {
-	   		count += 1
 	   		count += self.leftChild!.height
    		}
 
     	if self.rightChild !== nil {
    			
    			if self.leftChild === nil {
-   				count += 1
    				count += self.rightChild!.height
    			}
    			
@@ -122,30 +120,29 @@ class BSTNode<T: Comparable> {
     	}
     } 
 
-    // func delete(element: T) {
+  //   func delete(element: T) {
 
-    // 	if element == self.element {
-    // 		if leftChild !== nil {
-    // 			self = self.leftChild!
-    // 		}
+		// if self.leftChild?.element == element {
+		// 	if self.leftChild.leftChild !== nil {
+		// 		self.leftChild = self.leftChild!.leftChild!
+		// 	}
+		// }
 
-    // 		else if rightChild !== nil {
-    // 			self = self.rightChild!
-    // 		} 
+		// else if self.rightChild?.element == element {
+		// 	self.rightChild = nil
+		// }
 
-    // 		else {
-    // 			self = nil
-    // 		}
-    // 	}
+		// else {
+		// 	if self.leftChild !== nil {
+		// 		self.leftChild!.delete(element: element)
+		// 	}
 
-    // 	else if element < self.element {
-    // 		self.leftChild.delete(element: element)
-    // 	}
+		// 	else if self.rightChild !== nil {
+		// 		self.rightChild!.delete(element: element)
+		// 	}
+		// }
 
-    // 	else if element > self.element {
-    // 		self.rightChild.delete(element: element)
-    // 	}
-    // }
+  //   }
 
 }
 
@@ -253,5 +250,15 @@ class BinarySearchTree<T: Comparable> {
 
 		return makeBreadthFirstArray
 	}
+
+	// func delete(element: T) {
+	// 	if self.root?.element == element {
+	// 		self.root = nil
+	// 	}
+
+	// 	else {
+	// 		self.root?.delete(element: element)
+	// 	}
+	// }
 
 }

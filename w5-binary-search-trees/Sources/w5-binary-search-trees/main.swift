@@ -8,7 +8,7 @@
 import Foundation
 
 func main() {
-	let BST = BinarySearchTree<Int>(fromSortedData: [16, 11, 20, 1, 15, 31, 12])
+	let BST = BinarySearchTree<Int>(fromSortedData: [16, 11, 20, 1, 15, 31, 35, 37])
 
 	print(BST.elements)
 	print("height: \(BST.height)")
