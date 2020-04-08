@@ -1,3 +1,1 @@
-# w5-binary-search-trees
-
-A description of this package.
+# Week 5 - Binary Search Trees
