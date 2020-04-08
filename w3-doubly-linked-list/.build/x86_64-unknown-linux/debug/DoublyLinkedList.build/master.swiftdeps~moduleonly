@@ -1,0 +1,5 @@
+version: "Swift version 5.1.4 (swift-5.1.4-RELEASE)"
+options: "e68d15ab2ec3521b793673cd9470f96d"
+build_time: [1586307978, 451381566]
+inputs:
+  "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Sources/DoublyLinkedList/main.swift": [1584043590, 951999314]

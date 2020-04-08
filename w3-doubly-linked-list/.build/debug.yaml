@@ -1,0 +1,121 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "main": ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule","<DoublyLinkedList-debug.exe>","<DoublyLinkedList-debug.module>"]
+  "test": ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.xctest","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule","<DoublyLinkedList-debug.exe>","<DoublyLinkedList-debug.module>","<DoublyLinkedListPackageTests-debug.test>","<DoublyLinkedListTests-debug.module>"]
+  "DoublyLinkedList-debug.exe": ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList","<DoublyLinkedList-debug.exe>"]
+  "DoublyLinkedList-debug.module": ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule","<DoublyLinkedList-debug.module>"]
+  "DoublyLinkedListPackageTests-debug.module": ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.swiftmodule","<DoublyLinkedListPackageTests-debug.module>"]
+  "DoublyLinkedListPackageTests-debug.test": ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.xctest","<DoublyLinkedListPackageTests-debug.test>"]
+  "DoublyLinkedListTests-debug.module": ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule","<DoublyLinkedListTests-debug.module>"]
+default: "main"
+commands: 
+  "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/DoublyLinkedList.swiftmodule.o":
+    tool: shell
+    description: "Wrapping AST for DoublyLinkedList for debugging"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/DoublyLinkedList.swiftmodule.o"]
+    args: ["/usr/share/swift/usr/bin/swiftc","-modulewrap","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule","-o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/DoublyLinkedList.swiftmodule.o"]
+
+  "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build/DoublyLinkedListPackageTests.swiftmodule.o":
+    tool: shell
+    description: "Wrapping AST for DoublyLinkedListPackageTests for debugging"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.swiftmodule"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build/DoublyLinkedListPackageTests.swiftmodule.o"]
+    args: ["/usr/share/swift/usr/bin/swiftc","-modulewrap","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.swiftmodule","-o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build/DoublyLinkedListPackageTests.swiftmodule.o"]
+
+  "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/DoublyLinkedListTests.swiftmodule.o":
+    tool: shell
+    description: "Wrapping AST for DoublyLinkedListTests for debugging"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/DoublyLinkedListTests.swiftmodule.o"]
+    args: ["/usr/share/swift/usr/bin/swiftc","-modulewrap","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule","-o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/DoublyLinkedListTests.swiftmodule.o"]
+
+  "<C.DoublyLinkedList-debug.exe>":
+    tool: phony
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList"]
+    outputs: ["<DoublyLinkedList-debug.exe>"]
+
+  "<C.DoublyLinkedList-debug.module>":
+    tool: phony
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule"]
+    outputs: ["<DoublyLinkedList-debug.module>"]
+
+  "<C.DoublyLinkedListPackageTests-debug.module>":
+    tool: phony
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.swiftmodule"]
+    outputs: ["<DoublyLinkedListPackageTests-debug.module>"]
+
+  "<C.DoublyLinkedListPackageTests-debug.test>":
+    tool: phony
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.xctest"]
+    outputs: ["<DoublyLinkedListPackageTests-debug.test>"]
+
+  "<C.DoublyLinkedListTests-debug.module>":
+    tool: phony
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule"]
+    outputs: ["<DoublyLinkedListTests-debug.module>"]
+
+  "C.DoublyLinkedList-debug.exe":
+    tool: shell
+    description: "Linking ./.build/x86_64-unknown-linux/debug/DoublyLinkedList"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/DoublyLinkedList.swiftmodule.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/main.swift.o"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList"]
+    args: ["/usr/share/swift/usr/bin/swiftc","-sdk","/","-g","-L","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug","-o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList","-module-name","DoublyLinkedList","-emit-executable","-Xlinker","-rpath=$ORIGIN","@/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.product/Objects.LinkFileList","-target","x86_64-unknown-linux","-L","/usr/share/swift/usr/lib"]
+
+  "C.DoublyLinkedList-debug.module":
+    tool: swift-compiler
+    executable: "/usr/share/swift/usr/bin/swiftc"
+    module-name: "DoublyLinkedList"
+    module-output-path: "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Sources/DoublyLinkedList/main.swift"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/main.swift.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.swiftmodule"]
+    import-paths: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug"]
+    temps-path: "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build"
+    objects: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/main.swift.o"]
+    other-args: ["-target","x86_64-unknown-linux","-swift-version","5","-enable-batch-mode","-index-store-path","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/index/store","-sdk","/","-Onone","-g","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/ModuleCache","-parseable-output","-Xfrontend","-color-diagnostics"]
+    sources: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Sources/DoublyLinkedList/main.swift"]
+    is-library: false
+    enable-whole-module-optimization: false
+    num-threads: "8"
+
+  "C.DoublyLinkedListPackageTests-debug.module":
+    tool: swift-compiler
+    executable: "/usr/share/swift/usr/bin/swiftc"
+    module-name: "DoublyLinkedListPackageTests"
+    module-output-path: "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.swiftmodule"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Tests/LinuxMain.swift"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build/LinuxMain.swift.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.swiftmodule"]
+    import-paths: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug"]
+    temps-path: "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build"
+    objects: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build/LinuxMain.swift.o"]
+    other-args: ["-target","x86_64-unknown-linux","-swift-version","5","-enable-batch-mode","-index-store-path","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/index/store","-sdk","/","-Onone","-g","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/ModuleCache","-parseable-output","-Xfrontend","-color-diagnostics"]
+    sources: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Tests/LinuxMain.swift"]
+    is-library: false
+    enable-whole-module-optimization: false
+    num-threads: "8"
+
+  "C.DoublyLinkedListPackageTests-debug.test":
+    tool: shell
+    description: "Linking ./.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.xctest"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build/DoublyLinkedListPackageTests.swiftmodule.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.build/LinuxMain.swift.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/DoublyLinkedListTests.swift.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/DoublyLinkedListTests.swiftmodule.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/XCTestManifests.swift.o"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.xctest"]
+    args: ["/usr/share/swift/usr/bin/swiftc","-sdk","/","-g","-L","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug","-o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.xctest","-module-name","DoublyLinkedListPackageTests","-emit-executable","-Xlinker","-rpath=$ORIGIN","@/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListPackageTests.product/Objects.LinkFileList","-target","x86_64-unknown-linux","-L","/usr/share/swift/usr/lib"]
+
+  "C.DoublyLinkedListTests-debug.module":
+    tool: swift-compiler
+    executable: "/usr/share/swift/usr/bin/swiftc"
+    module-name: "DoublyLinkedListTests"
+    module-output-path: "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule"
+    inputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Tests/DoublyLinkedListTests/DoublyLinkedListTests.swift","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Tests/DoublyLinkedListTests/XCTestManifests.swift"]
+    outputs: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/DoublyLinkedListTests.swift.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/XCTestManifests.swift.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.swiftmodule"]
+    import-paths: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug"]
+    temps-path: "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build"
+    objects: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/DoublyLinkedListTests.swift.o","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedListTests.build/XCTestManifests.swift.o"]
+    other-args: ["-target","x86_64-unknown-linux","-swift-version","5","-enable-batch-mode","-index-store-path","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/index/store","-sdk","/","-Onone","-g","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/ModuleCache","-parseable-output","-Xfrontend","-color-diagnostics"]
+    sources: ["/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Tests/DoublyLinkedListTests/DoublyLinkedListTests.swift","/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Tests/DoublyLinkedListTests/XCTestManifests.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: "8"
+

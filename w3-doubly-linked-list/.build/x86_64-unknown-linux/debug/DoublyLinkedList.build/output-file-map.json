@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/master.swiftdeps"
+  },
+  "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/Sources/DoublyLinkedList/main.swift": {
+    "dependencies": "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/main.d",
+    "object": "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/main.swift.o",
+    "swiftmodule": "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/main~partial.swiftmodule",
+    "swift-dependencies": "/home/stacychoco/design-patterns-and-data-structures/w3-doubly-linked-list/.build/x86_64-unknown-linux/debug/DoublyLinkedList.build/main.swiftdeps"
+  }
+}
