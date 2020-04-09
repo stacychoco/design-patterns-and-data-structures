@@ -1,0 +1,41 @@
+Stacy Nguyen
+Design Patterns & Data Structures
+Spring 2020
+
+1) Photo attached
+
+2) Design an algorithm (pseudocode or prose) to check if a binary tree is a binary search tree
+
+func IsABinarySearchTree(tree: BinarySearchTree<T>) -> Bool {
+
+// arrayToCheck = tree.elements (inorder traversal)
+
+// for x in range(1, arrayToCheck.count):
+	// if arrayToCheck[x-1] > arrayToCheck[x]:
+		// return false
+
+// return true
+
+}
+
+
+3) Design an algorithm (pseudocode or prose) to check if a binary tree is perfectly balanced
+(smallest height possible for the number of nodes)
+
+func isBalanced(root: BSTNode<T>?) -> Bool {
+
+// if root is None:
+	return true
+
+// leftHeight = root.leftChild.height
+// rightHeight = root.rightChild.height
+
+// if the absolute of leftHeight - rightHeight <=1:
+	// if isBalanced(root: root.leftChild):
+		// if isBalanced(root: root.rightChild):
+			// return true
+
+// else:
+	// return false
+
+}
