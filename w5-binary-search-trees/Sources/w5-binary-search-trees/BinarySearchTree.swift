@@ -120,6 +120,8 @@ class BSTNode<T: Comparable> {
     	}
     } 
 
+  //   leaving my code here because my function doesn't work yet
+
   //   func delete(element: T) {
 
 		// if self.leftChild?.element == element {
@@ -230,12 +232,16 @@ class BinarySearchTree<T: Comparable> {
 		var queue: [BSTNode<T>] = []
 		var currentNode = self.root
 
+		// if tree is not empty
 		if !self.isEmpty {
 			queue.append(currentNode!)
 		}
 
+		// while queue is not empty
 		while !queue.isEmpty {
 			
+			// removes and returns the first element of queue to currentNode
+			// essentially dequeue
 			currentNode = queue.removeFirst()
 			makeBreadthFirstArray.append(currentNode!.element)
 			
