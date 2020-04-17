@@ -148,6 +148,38 @@ class RedBlackNode<T: Comparable> {
 
   }
 
+  func isBalanced() -> Bool {
+
+    if self.rightChild?.color == .red {
+      return false
+    }
+
+    else if (self.leftChild?.color == .red) && (self.leftChild?.leftChild?.color == .red) {
+      return false
+    }
+
+    else if (self.leftChild?.color == .red) && (self.rightChild?.color == .red) {
+      return false
+    }
+
+    else {
+
+      if self.leftChild?.isBalanced() == false {
+        return false
+      }
+
+      else if self.rightChild?.isBalanced() == false {
+        return false
+      }
+
+      else {
+        return true
+      }
+
+    }
+
+  }
+
   func insert(element: T) {
   	let newNode = RedBlackNode(element: element)
 
@@ -267,8 +299,10 @@ class RedBlackTree<T: Comparable> {
 
   func makeTreeBalanced() {
     if !self.isEmpty {
-      self.root!.makeTreeBalanced()
-      self.root!.color = .black
+      while self.root!.isBalanced() == false {
+        self.root!.makeTreeBalanced()
+        self.root!.color = .black
+      }
     }
   }
 
@@ -306,8 +340,8 @@ class RedBlackTree<T: Comparable> {
 		}
 	}
 
-	func makeBreadthFirstArray() -> [T] {
-		var makeBreadthFirstArray: [T] = []
+	func makeBreadthFirstArray() -> [Any] {
+		var makeBreadthFirstArray: [Any] = []
 		var queue: [RedBlackNode<T>] = []
 		var currentNode = self.root
 
@@ -323,6 +357,7 @@ class RedBlackTree<T: Comparable> {
 			// essentially dequeue
 			currentNode = queue.removeFirst()
 			makeBreadthFirstArray.append(currentNode!.element)
+      //makeBreadthFirstArray.append(currentNode!.color)
 			
 			if currentNode!.leftChild !== nil {
 				queue.append(currentNode!.leftChild!)
