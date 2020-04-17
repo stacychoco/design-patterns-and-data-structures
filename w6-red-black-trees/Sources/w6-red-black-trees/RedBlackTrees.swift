@@ -102,16 +102,16 @@ class RedBlackNode<T: Comparable> {
 
   func rotateRight() {
     
-    if self.leftChild !== nil { //left
+    if self.leftChild !== nil { 
       
       let newNode = RedBlackNode(element: self.element, rightChild: self.rightChild)
       self.rightChild = newNode
 
-      self.element = self.leftChild!.element //left
+      self.element = self.leftChild!.element
 
       self.rightChild?.leftChild = self.leftChild?.rightChild
 
-      self.leftChild = self.leftChild?.leftChild //left/left/left
+      self.leftChild = self.leftChild?.leftChild
 
       self.color = .black
       self.rightChild?.color = .red
@@ -228,25 +228,6 @@ class RedBlackNode<T: Comparable> {
   	}
   }
 
-//   leaving my code here because my function doesn't work yet
-//   func delete(element: T) {
-	// if self.leftChild?.element == element {
-	// 	if self.leftChild.leftChild !== nil {
-	// 		self.leftChild = self.leftChild!.leftChild!
-	// 	}
-	// }
-	// else if self.rightChild?.element == element {
-	// 	self.rightChild = nil
-	// }
-	// else {
-	// 	if self.leftChild !== nil {
-	// 		self.leftChild!.delete(element: element)
-	// 	}
-	// 	else if self.rightChild !== nil {
-	// 		self.rightChild!.delete(element: element)
-	// 	}
-	// }
-//   }
 }
 
 class RedBlackTree<T: Comparable> {
@@ -371,12 +352,4 @@ class RedBlackTree<T: Comparable> {
 		return makeBreadthFirstArray
 	}
 
-	// func delete(element: T) {
-	// 	if self.root?.element == element {
-	// 		self.root = nil
-	// 	}
-	// 	else {
-	// 		self.root?.delete(element: element)
-	// 	}
-	// }
 }
