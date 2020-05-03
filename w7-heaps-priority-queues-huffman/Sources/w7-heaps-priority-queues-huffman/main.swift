@@ -7,8 +7,7 @@ func main() {
 	heap.insert(element: 4)
 	print("Success")
 	print(heap.heap)
-
-	_ = heap.extractMin()
+	let _ = heap.extractMin()
 	print(heap.heap)
 }
 
