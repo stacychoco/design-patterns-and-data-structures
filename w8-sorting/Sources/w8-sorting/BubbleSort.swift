@@ -9,6 +9,7 @@ import Foundation
 
 extension Array where Element: Comparable {
 
+	// checks if array is sorted
 	func isSorted() -> Bool {
 		let arr = self
 
