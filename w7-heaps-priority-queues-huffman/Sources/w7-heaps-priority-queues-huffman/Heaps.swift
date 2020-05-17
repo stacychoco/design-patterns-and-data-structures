@@ -1,8 +1,8 @@
 //
-//  BinarySearchTree.swift
-//  Binary Search Tree HW
+//  Heaps.swift
+//  Heaps, Priority Queue, Huffman Encoding HW
 //
-//  Created by Stacy Nguyen on 4/7/20.
+//  Created by Stacy Nguyen on 4/29/20.
 //  Copyright © 2020 Stacy Nguyen. All rights reserved.
 //
 import Foundation
@@ -10,7 +10,7 @@ import Foundation
 
 class Heap<T: Comparable> {
 
-	var heap: [T] = []
+	var array: [T] = [] // array used to implement heap
 	var size = 0 // size of heap
 	var index = 0 // I'm taking note of a current index in the heap
 
@@ -27,43 +27,43 @@ class Heap<T: Comparable> {
 	}
 
 	var isEmpty: Bool {
-		return heap.isEmpty
+		return array.isEmpty
 	}
 
 	func insert(element: T) {
 
 		size += 1
 		index = size - 1
-		heap.append(element)
+		array.append(element)
 
-		while index != 0 && heap[index] < heap[parent] {
-			heap.swapAt(index, parent)
+		while index != 0 && array[index] < array[parent] {
+			array.swapAt(index, parent)
 			index = parent
 		}
 	}
 
 	func extractMin() -> T {
 
-		let extractedRoot = heap[0]
-		heap.remove(at: 0)
+		let extractedRoot = array[0]
+		array.remove(at: 0)
 		size -= 1
 
-		let lastElement = heap[(size - 1)]
-		heap.remove(at: (size - 1))
+		let lastElement = array[(size - 1)]
+		array.remove(at: (size - 1))
 		
-		heap.insert(lastElement, at: 0)
+		array.insert(lastElement, at: 0)
 
 		index = 0
 
-		while heap[index] > heap[leftChild] || heap[index] > heap[rightChild] {
+		while array[index] > array[leftChild] || array[index] > array[rightChild] {
 
-			if heap[leftChild] <= heap[rightChild] {
-				heap.swapAt(index, leftChild)
+			if array[leftChild] <= array[rightChild] {
+				array.swapAt(index, leftChild)
 				index = leftChild
 			}
 
 			else {
-				heap.swapAt(index, rightChild)
+				array.swapAt(index, rightChild)
 				index = rightChild
 			}
 
