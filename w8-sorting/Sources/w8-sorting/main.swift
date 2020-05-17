@@ -7,10 +7,23 @@
 //
 import Foundation
 
-var array = [Int]((0..<100).shuffled())
+var array = [Int]((1...50).shuffled())
 print(array)
 
 print()
 
-array = array.selectionSort()
-print(array)
+print("Insertion Sort:")
+let array1 = array.insertionSorting()
+print(array1)
+
+print()
+
+print("Selection Sort:")
+let array2 = array.selectionSort()
+print(array2)
+
+print()
+
+print("Bubble Sort:")
+let array3 = array.bubbleSort()
+print(array3)

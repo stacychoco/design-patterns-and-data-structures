@@ -8,26 +8,27 @@
 import Foundation
 
 extension Array where Element: Comparable {
+	
 	func selectionSort() -> Array {
-		var array = self
-		
-		// temporary index
-		for tempIndex in 1..<array.count {
+		var arr = self  // array
 
-			// temporary element
-			let tempElement = array[tempIndex]
+		for i in 0..<(arr.count - 1) {
 			
-			// current index
-			var currIndex = tempIndex - 1
+			var currIndex = i // current index
+			var minIndex = i  // index of the smallest element
 
-			while currIndex >= 0 && tempElement < array[currIndex] {
-				array[currIndex + 1] = array[currIndex]
-				currIndex -= 1
+			while currIndex < arr.count {
+				
+				if arr[currIndex] < arr[minIndex] {
+					minIndex = currIndex
+				}
+
+				currIndex += 1
 			}
 
-			array[currIndex + 1] = tempElement
+			arr.swapAt(i, minIndex)
 		}
 
-		return array
+		return arr
 	}
 }
