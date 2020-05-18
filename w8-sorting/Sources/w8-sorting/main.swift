@@ -7,7 +7,7 @@
 //
 import Foundation
 
-var array = [Int]((1...50).shuffled())
+let array = [Int]((1...50).shuffled())
 print(array)
 
 print()
