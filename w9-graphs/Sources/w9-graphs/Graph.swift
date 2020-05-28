@@ -12,7 +12,8 @@ import Foundation
 QUESTIONS FOR JUSTIN
 
 Does the list of neighbors contains the vertex itself?
-Does the list of adjacent vertices + connected vertices
+Does the list of adjacent vertices + connected vertices contains the vertex itself?
+Does remove edge remove all disconnected vertices?
 
 Homework #9 - Graphs
 
@@ -28,26 +29,33 @@ func hasCycle() -> Bool
 
 class Graph {
 
-	init() {
-		var vertexArr = [[Int]]()
-		var vertices = vertexArr.count
-		var visited = Array(repeating: false, count: vertices)
-
-	}
+	var vertexArr = [[Int]]() // array of vertices and their links
+	var count = 0 // number of vertices
 
 	// adds an edge (two linked nodes)
 	func addEdge( firstVertex : Int, secondVertex : Int ) {
+
+		if vertexArr[firstVertex].isEmpty {
+			vertexArr[firstVertex] = []
+		}
+
+		if vertexArr[secondVertex].isEmpty {
+			vertexArr[secondVertex] = []
+		}
+
 		vertexArr[firstVertex].append(secondVertex)
 		vertexArr[secondVertex].append(firstVertex)
+
+		count = vertexArr.count
 	}
 
 	func removeEdge( firstVertex : Int, secondVertex : Int ) {
 
-		if let index = vertexArr[firstVertex].index(of: secondVertex) {
+		if let index = vertexArr[firstVertex].firstIndex(of: secondVertex) {
 			vertexArr[firstVertex].remove(at: index)
 		}
 
-		if let index = vertexArr[secondVertex].index(of: firstVertex) {
+		if let index = vertexArr[secondVertex].firstIndex(of: firstVertex) {
 			vertexArr[secondVertex].remove(at: index)
 		}
 
@@ -72,21 +80,32 @@ class Graph {
 
 	func verticesAreConnected(firstVertex : Int, secondVertex : Int) -> Bool {
 
-		if visited[firstVertex] == false {
-			
-			visited[firstVertex] = true
-			
-			for x in vertexArr[firstVertex] {
-				if x == secondVertex {
-					return true
-				}
+		var queue: [Int] = []
+		queue.append(firstVertex)
 
-				else {
-					verticesAreConnected(firstVertex: x, secondVertex: secondVertex)
+		var visited = Array(repeating: false, count: count)
+
+		while !queue.isEmpty {
+
+			let currentVertex = queue.removeFirst()
+			if visited[currentVertex] == false {
+				
+				visited[currentVertex] = true
+				
+				for x in vertexArr[currentVertex] {
+					if x == secondVertex {
+						return true
+					}
+
+					else {
+						queue.append(x)
+					}
 				}
 			}
 
 		}
+
+		return false
 
 	} 
 
