@@ -82,7 +82,6 @@ class Graph {
 			// dequeue from the front
 			let currentVertex = queue.removeFirst()
 			if visited[currentVertex] == false {
-				
 				visited[currentVertex] = true
 				
 				for x in vertexArr[currentVertex] ?? [] {
@@ -104,12 +103,34 @@ class Graph {
 
 	func shortestPathFrom(_ start : Int, to end : Int ) -> [Int] {
 
-		// set distance
-		// set previous array
+		var path = [start]
+		var queue = [start]
+		var visited = Array(repeating: false, count: count)
 
-		// set queue
+		while !queue.isEmpty {
+			// dequeue from the front
+			let currentVertex = queue.removeFirst()
 
-		return []
+			if visited[currentVertex] == false {
+				
+				visited[currentVertex] = true
+				path.append(currentVertex)
+				
+				for x in vertexArr[currentVertex] ?? [] {
+					if x == end {
+						path.append(x)
+						break
+					}
+
+					else {
+						queue.append(x)
+					}
+				}
+
+			}
+		}
+
+		return path
 	}
 
 	// helper recursive function for hasCycle function
