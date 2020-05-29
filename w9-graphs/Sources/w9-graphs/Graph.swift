@@ -104,9 +104,13 @@ class Graph {
 
 	}
 
-	func shortestPathFrom(_ start : Int, end : Int ) -> [Int] {
+	func shortestPathFrom(_ start : Int, _ end : Int ) -> [Int] {
 
-		var path = [start]
+		if !verticesAreConnected(firstVertex : start, secondVertex : end) {
+			return []
+		}
+
+		var path: [Int] = []
 		var queue = [start]
 		
 		// visited array keeps track of which vertices are visited
@@ -115,7 +119,7 @@ class Graph {
 			visited[x] = false
 		}
 
-		while !queue.isEmpty {
+		queueLoop: while !queue.isEmpty {
 			// dequeue from the front
 			let currentVertex = queue.removeFirst()
 
@@ -123,11 +127,14 @@ class Graph {
 				
 				visited[currentVertex] = true
 				path.append(currentVertex)
+				if currentVertex == end {
+					break
+				}
 				
 				for x in vertexArr[currentVertex] ?? [] {
 					if x == end {
 						path.append(x)
-						break
+						break queueLoop
 					}
 
 					else {

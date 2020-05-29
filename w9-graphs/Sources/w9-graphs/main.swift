@@ -24,7 +24,7 @@ print(graph.neighborsOf(vertex: 2))
 print(graph.vertexArr)
 print(graph.count)
 
-let bool = graph.verticesAreAdjacent( firstVertex : 1, secondVertex : 2 )
+let bool = graph.verticesAreAdjacent( firstVertex : 1, secondVertex : 3 )
 let bool2 = graph.verticesAreAdjacent( firstVertex : 1, secondVertex : 5 )
 
 if bool == true {
@@ -47,5 +47,5 @@ if bool4 == true {
 	print("true")
 }
 
-let path = graph.shortestPathFrom(1, end : 5 )
+let path = graph.shortestPathFrom(1, 5)
 print(path)
