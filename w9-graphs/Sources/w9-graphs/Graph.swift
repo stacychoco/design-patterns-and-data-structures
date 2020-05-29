@@ -14,68 +14,58 @@ QUESTIONS FOR JUSTIN
 Does the list of neighbors contains the vertex itself?
 Does the list of adjacent vertices + connected vertices contains the vertex itself?
 Does remove edge remove all disconnected vertices?
-
-Homework #9 - Graphs
-
-For the graph, rather than storing elements in the vertices, 
-we'll just have each vertex be a unique integer. So when you 
-make a new graph with N vertices, assume they are numbered 0
-to N-1.
-
-func shortestPathFrom(_ start : Vertex, to end : Vertex ) -> [Int] 
-func hasCycle() -> Bool
+Would it be necessary to create an initializer?
 
 */
 
 class Graph {
 
-	var vertexArr = [[Int]]() // array of vertices and their links
+	var vertexArr = [Int: [Int]]() // array of vertices and their links
 	var count = 0 // number of vertices
 
 	// adds an edge (two linked nodes)
 	func addEdge( firstVertex : Int, secondVertex : Int ) {
 
-		if vertexArr[firstVertex].isEmpty {
+		if vertexArr[firstVertex] == nil {
 			vertexArr[firstVertex] = []
 		}
 
-		if vertexArr[secondVertex].isEmpty {
+		if vertexArr[secondVertex] == nil {
 			vertexArr[secondVertex] = []
 		}
 
-		vertexArr[firstVertex].append(secondVertex)
-		vertexArr[secondVertex].append(firstVertex)
+		vertexArr[firstVertex]!.append(secondVertex)
+		vertexArr[secondVertex]!.append(firstVertex)
 
 		count = vertexArr.count
 	}
 
 	func removeEdge( firstVertex : Int, secondVertex : Int ) {
 
-		if let index = vertexArr[firstVertex].firstIndex(of: secondVertex) {
-			vertexArr[firstVertex].remove(at: index)
+		if let index = vertexArr[firstVertex]?.firstIndex(of: secondVertex) {
+			vertexArr[firstVertex]!.remove(at: index)
 		}
 
-		if let index = vertexArr[secondVertex].firstIndex(of: firstVertex) {
-			vertexArr[secondVertex].remove(at: index)
+		if let index = vertexArr[secondVertex]?.firstIndex(of: firstVertex) {
+			vertexArr[secondVertex]!.remove(at: index)
 		}
 
 	}
 
 	// lists the vertices that are adjacent to checked vertex
 	func neighborsOf( vertex : Int ) -> [Int] {
-		return vertexArr[vertex] 
+		return vertexArr[vertex] ?? []
 	}
 
 	func verticesAreAdjacent( firstVertex : Int, secondVertex : Int ) -> Bool {
 		
-		if vertexArr[firstVertex].contains(secondVertex) {
-			return true
+		if vertexArr[firstVertex] != nil {
+			if vertexArr[firstVertex]!.contains(secondVertex) {
+				return true
+			}
 		}
-
-		else {
-			return false
-		}
-
+		
+		return false
 	}
 
 	func verticesAreConnected(firstVertex : Int, secondVertex : Int) -> Bool {
@@ -83,16 +73,19 @@ class Graph {
 		var queue: [Int] = []
 		queue.append(firstVertex)
 
+		// visited array keeps track of which vertices are visited
 		var visited = Array(repeating: false, count: count)
 
+		// while queue is not empty
 		while !queue.isEmpty {
 
+			// dequeue from the front
 			let currentVertex = queue.removeFirst()
 			if visited[currentVertex] == false {
 				
 				visited[currentVertex] = true
 				
-				for x in vertexArr[currentVertex] {
+				for x in vertexArr[currentVertex] ?? [] {
 					if x == secondVertex {
 						return true
 					}
@@ -107,8 +100,53 @@ class Graph {
 
 		return false
 
-	} 
+	}
 
+	func shortestPathFrom(_ start : Int, to end : Int ) -> [Int] {
 
+		// set distance
+		// set previous array
+
+		// set queue
+
+		return []
+	}
+
+	// helper recursive function for hasCycle function
+	func hasCycleUtil(v: Int, visited: inout [Bool]) -> Bool {
+
+		visited[v] = true
+
+		for x in vertexArr[v] ?? [] {
+			
+			if visited[x] == false {
+				if hasCycleUtil(v: x, visited: &visited) {
+					return true
+				}
+			}
+
+			else if x != v {
+				return true
+			}
+		}
+
+		return false
+
+	}
+
+	func hasCycle() -> Bool {
+
+		var visited = Array(repeating: false, count: count)
+
+		for (x, _) in vertexArr {
+			if visited[x] == false {
+				if hasCycleUtil(v: x, visited: &visited) {
+					return true
+				}
+			}
+		}
+
+		return false
+	}
 
 }
