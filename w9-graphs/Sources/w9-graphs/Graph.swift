@@ -104,7 +104,7 @@ class Graph {
 
 	}
 
-	func shortestPathFrom(_ start : Int, to end : Int ) -> [Int] {
+	func shortestPathFrom(_ start : Int, end : Int ) -> [Int] {
 
 		var path = [start]
 		var queue = [start]
@@ -142,16 +142,20 @@ class Graph {
 	}
 
 	// helper recursive function for hasCycle function
-	private func hasCycleUtil(v: Int, visited: inout [Int:Bool]) -> Bool {
+	private func hasCycleUtil(v: Int, parent: Int, visited: inout [Int:Bool]) -> Bool {
 
 		visited[v] = true
 
 		for x in vertexArr[v] ?? [] {
 			
 			if visited[x] == false {
-				if hasCycleUtil(v: x, visited: &visited) {
+				if hasCycleUtil(v: x, parent: v, visited: &visited) {
 					return true
 				}
+			}
+
+			else if visited[x] == true && x != parent {
+				return true
 			}
 
 		}
@@ -170,7 +174,7 @@ class Graph {
 
 		for (x, _) in vertexArr {
 			if visited[x] == false {
-				if hasCycleUtil(v: x, visited: &visited) {
+				if hasCycleUtil(v: x, parent: x, visited: &visited) {
 					return true
 				}
 			}

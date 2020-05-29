@@ -46,3 +46,6 @@ let bool4 = graph.hasCycle()
 if bool4 == true {
 	print("true")
 }
+
+let path = graph.shortestPathFrom(1, end : 5 )
+print(path)
