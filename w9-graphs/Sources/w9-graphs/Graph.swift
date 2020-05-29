@@ -16,16 +16,22 @@ Does the list of adjacent vertices + connected vertices contains the vertex itse
 Does remove edge remove all disconnected vertices?
 Would it be necessary to create an initializer?
 
+I plan to ask you these on Slack in case I make any mistakes and need to fix my code :)
+
 */
 
 class Graph {
 
-	var vertexArr = [Int: [Int]]() // array of vertices and their links
+	var vertexArr = [Int: [Int]]() // dictionary of vertices and their links
+	// i created an array at first so i called it vertex array, but
+	// i would have called it dictionary if I had changed sooner
+
 	var count = 0 // number of vertices
 
 	// adds an edge (two linked nodes)
 	func addEdge( firstVertex : Int, secondVertex : Int ) {
 
+		// if the vertices don't exist, create them
 		if vertexArr[firstVertex] == nil {
 			vertexArr[firstVertex] = []
 		}
@@ -37,11 +43,14 @@ class Graph {
 		vertexArr[firstVertex]!.append(secondVertex)
 		vertexArr[secondVertex]!.append(firstVertex)
 
+		// i count here because for some reason they dont allow me to count
+		// before vertexArr has any elements
 		count = vertexArr.count
 	}
 
 	func removeEdge( firstVertex : Int, secondVertex : Int ) {
 
+		// remove edges if they exist
 		if let index = vertexArr[firstVertex]?.firstIndex(of: secondVertex) {
 			vertexArr[firstVertex]!.remove(at: index)
 		}
@@ -52,7 +61,6 @@ class Graph {
 
 	}
 
-	// lists the vertices that are adjacent to checked vertex
 	func neighborsOf( vertex : Int ) -> [Int] {
 		return vertexArr[vertex] ?? []
 	}
@@ -73,7 +81,7 @@ class Graph {
 		var queue: [Int] = []
 		queue.append(firstVertex)
 
-		// visited array keeps track of which vertices are visited
+		// visited dict keeps track of which vertices are visited
 		var visited: [Int:Bool] = [:]
 		for (x, _) in vertexArr {
 			visited[x] = false
@@ -106,6 +114,7 @@ class Graph {
 
 	func shortestPathFrom(_ start : Int, _ end : Int ) -> [Int] {
 
+		// if they aren't connected, there can't be a path
 		if !verticesAreConnected(firstVertex : start, secondVertex : end) {
 			return []
 		}
@@ -113,7 +122,7 @@ class Graph {
 		var path: [Int] = []
 		var queue = [start]
 		
-		// visited array keeps track of which vertices are visited
+		// visited dict keeps track of which vertices are visited
 		var visited: [Int:Bool] = [:]
 		for (x, _) in vertexArr {
 			visited[x] = false
@@ -149,6 +158,7 @@ class Graph {
 	}
 
 	// helper recursive function for hasCycle function
+	// this function checks if the "children" of a vertex has a cycle 
 	private func hasCycleUtil(v: Int, parent: Int, visited: inout [Int:Bool]) -> Bool {
 
 		visited[v] = true
@@ -173,7 +183,7 @@ class Graph {
 
 	func hasCycle() -> Bool {
 		
-		// visited array keeps track of which vertices are visited
+		// visited dict keeps track of which vertices are visited
 		var visited: [Int:Bool] = [:]
 		for (x, _) in vertexArr {
 			visited[x] = false
