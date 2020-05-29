@@ -8,3 +8,41 @@
 import Foundation
 
 print("Success")
+
+var graph = Graph()
+
+graph.addEdge(firstVertex: 1, secondVertex: 2)
+graph.addEdge(firstVertex: 1, secondVertex: 3)
+graph.addEdge(firstVertex: 2, secondVertex: 4)
+graph.addEdge(firstVertex: 2, secondVertex: 5)
+graph.addEdge(firstVertex: 4, secondVertex: 5)
+graph.addEdge(firstVertex: 2, secondVertex: 6)
+
+graph.removeEdge(firstVertex: 2, secondVertex: 6)
+
+print(graph.neighborsOf(vertex: 2))
+print(graph.vertexArr)
+print(graph.count)
+
+let bool = graph.verticesAreAdjacent( firstVertex : 1, secondVertex : 2 )
+let bool2 = graph.verticesAreAdjacent( firstVertex : 1, secondVertex : 5 )
+
+if bool == true {
+	print("correct answer 1")
+}
+
+if bool2 == false {
+	print("correct answer 2")
+}
+
+let bool3 = graph.verticesAreConnected(firstVertex : 1, secondVertex : 5 )
+
+if bool3 == true {
+	print("nice correct again")
+}
+
+let bool4 = graph.hasCycle()
+
+if bool4 == true {
+	print("true")
+}

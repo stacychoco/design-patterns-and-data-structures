@@ -74,7 +74,10 @@ class Graph {
 		queue.append(firstVertex)
 
 		// visited array keeps track of which vertices are visited
-		var visited = Array(repeating: false, count: count)
+		var visited: [Int:Bool] = [:]
+		for (x, _) in vertexArr {
+			visited[x] = false
+		}
 
 		// while queue is not empty
 		while !queue.isEmpty {
@@ -105,7 +108,12 @@ class Graph {
 
 		var path = [start]
 		var queue = [start]
-		var visited = Array(repeating: false, count: count)
+		
+		// visited array keeps track of which vertices are visited
+		var visited: [Int:Bool] = [:]
+		for (x, _) in vertexArr {
+			visited[x] = false
+		}
 
 		while !queue.isEmpty {
 			// dequeue from the front
@@ -134,7 +142,7 @@ class Graph {
 	}
 
 	// helper recursive function for hasCycle function
-	func hasCycleUtil(v: Int, visited: inout [Bool]) -> Bool {
+	private func hasCycleUtil(v: Int, visited: inout [Int:Bool]) -> Bool {
 
 		visited[v] = true
 
@@ -146,9 +154,6 @@ class Graph {
 				}
 			}
 
-			else if x != v {
-				return true
-			}
 		}
 
 		return false
@@ -156,8 +161,12 @@ class Graph {
 	}
 
 	func hasCycle() -> Bool {
-
-		var visited = Array(repeating: false, count: count)
+		
+		// visited array keeps track of which vertices are visited
+		var visited: [Int:Bool] = [:]
+		for (x, _) in vertexArr {
+			visited[x] = false
+		}
 
 		for (x, _) in vertexArr {
 			if visited[x] == false {
