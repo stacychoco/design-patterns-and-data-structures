@@ -1,3 +1,1 @@
-# w9-graphs
-
-Week 9 - Graphs
+# Week 9 - Graphs
