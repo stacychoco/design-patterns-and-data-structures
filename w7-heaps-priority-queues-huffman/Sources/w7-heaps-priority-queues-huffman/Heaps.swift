@@ -45,32 +45,37 @@ class Heap<T: Comparable> {
 	func extractMin() -> T {
 
 		let extractedRoot = array[0]
-		array.remove(at: 0)
-		size -= 1
 
-		let lastElement = array[(size - 1)]
-		array.remove(at: (size - 1))
-		
-		array.insert(lastElement, at: 0)
+		array.swapAt(0, size - 1)
+		array.remove(at: size - 1)
+		size -= 1
 
 		index = 0
 
-		while array[index] > array[leftChild] || array[index] > array[rightChild] {
+		if size >= 3 {
+			while array[index] > array[leftChild] || array[index] > array[rightChild] {
 
-			if array[leftChild] <= array[rightChild] {
+				if array[leftChild] <= array[rightChild] {
+					array.swapAt(index, leftChild)
+					index = leftChild
+				}
+
+				else {
+					array.swapAt(index, rightChild)
+					index = rightChild
+				}
+
+				if leftChild > (size - 1) || rightChild > (size - 1) {
+					break
+				}
+
+			}
+		}
+
+		else if size == 2 {
+			if array[index] > array[leftChild] {
 				array.swapAt(index, leftChild)
-				index = leftChild
 			}
-
-			else {
-				array.swapAt(index, rightChild)
-				index = rightChild
-			}
-
-			if leftChild > (size - 1) || rightChild > (size - 1) {
-				break
-			}
-
 		}
 
 		return extractedRoot

@@ -16,9 +16,9 @@ func main() {
 	heap.insert(element: 5)
 	heap.insert(element: 4)
 	print("Success")
-	print(heap.heap)
+	print(heap.array)
 	let _ = heap.extractMin()
-	print(heap.heap)
+	print(heap.array)
 }
 
 main()
