@@ -17,6 +17,7 @@ graph.addEdge(firstVertex: 2, secondVertex: 4)
 graph.addEdge(firstVertex: 2, secondVertex: 5)
 graph.addEdge(firstVertex: 4, secondVertex: 5)
 graph.addEdge(firstVertex: 2, secondVertex: 6)
+graph.addEdge(firstVertex: 5, secondVertex: 7)
 
 graph.removeEdge(firstVertex: 2, secondVertex: 6)
 
@@ -47,5 +48,5 @@ if bool4 == true {
 	print("true")
 }
 
-let path = graph.shortestPathFrom(1, 5)
+let path = graph.shortestPathFrom(1, 7)
 print(path)

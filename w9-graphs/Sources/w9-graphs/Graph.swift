@@ -7,19 +7,6 @@
 //
 import Foundation
 
-/*
-
-QUESTIONS FOR JUSTIN
-
-Does the list of neighbors contains the vertex itself?
-Does the list of adjacent vertices + connected vertices contains the vertex itself?
-Does remove edge remove all disconnected vertices?
-Would it be necessary to create an initializer?
-
-I plan to ask you these on Slack in case I make any mistakes and need to fix my code :)
-
-*/
-
 class Graph {
 
 	var vertexArr = [Int: [Int]]() // dictionary of vertices and their links
@@ -92,10 +79,9 @@ class Graph {
 
 			// dequeue from the front
 			let currentVertex = queue.removeFirst()
-			if visited[currentVertex] == false {
-				visited[currentVertex] = true
-				
-				for x in vertexArr[currentVertex] ?? [] {
+			for x in vertexArr[currentVertex] ?? [] {
+				if visited[x] == false {
+					visited[x] = true
 					if x == secondVertex {
 						return true
 					}
@@ -119,6 +105,10 @@ class Graph {
 			return []
 		}
 
+		if start == end {
+			return [start]
+		}
+
 		var path: [Int] = []
 		var queue = [start]
 		
@@ -128,29 +118,43 @@ class Graph {
 			visited[x] = false
 		}
 
+		var prev: [Int:Int] = [:]
+
 		queueLoop: while !queue.isEmpty {
+
 			// dequeue from the front
 			let currentVertex = queue.removeFirst()
 
-			if visited[currentVertex] == false {
-				
-				visited[currentVertex] = true
-				path.append(currentVertex)
-				if currentVertex == end {
-					break
-				}
-				
-				for x in vertexArr[currentVertex] ?? [] {
+			for x in vertexArr[currentVertex] ?? [] {
+				if visited[x] == false {
+
+					visited[x] = true
+					prev[x] = currentVertex
+
 					if x == end {
-						path.append(x)
 						break queueLoop
 					}
 
 					else {
 						queue.append(x)
 					}
-				}
 
+				}
+			}
+
+		}
+
+		// while loop used to append elements to path
+		var currentVertex = end
+		while !path.contains(start) {
+			path.insert(currentVertex, at: 0)
+
+			if prev[currentVertex] != nil {
+				currentVertex = prev[currentVertex]!
+			}
+
+			else {
+				break
 			}
 		}
 
